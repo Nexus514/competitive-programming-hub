@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Competitive Programming Hub
 
-## Getting Started
+A web app for competitive programmers to track progress, browse curated problems, and study algorithm notes — all in one place.
 
-First, run the development server:
+> Status: MVP v0.1 — the interface is built and backed by static sample data. No database, auth, or code execution yet.
+
+## Features
+
+- **Landing page** — overview of the platform with quick links into the app.
+- **Dashboard** — rating history chart, activity heatmap, summary stats, and recent submissions.
+- **Problems** — searchable, filterable problem list (by difficulty and tag) with per-problem detail pages.
+- **Notes** — searchable algorithm reference notes grouped by category.
+
+## Tech stack
+
+- [Next.js](https://nextjs.org) 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS 4
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # production build
+npm run start   # run the production build
+npm run lint    # lint
+```
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+src/
+├── app/
+│   ├── page.tsx              # landing page
+│   ├── layout.tsx            # root layout and fonts
+│   └── (app)/                # authenticated-style app shell (sidebar layout)
+│       ├── dashboard/        # progress dashboard
+│       ├── problems/         # problem list + [id] detail page
+│       └── notes/            # algorithm notes
+├── components/               # shared UI (charts, badges, cards, sidebar, …)
+├── data/                     # static sample data
+└── lib/types.ts              # shared types
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All content currently comes from the modules in `src/data/`. Swapping those for real API calls is the next step toward a functional app.
